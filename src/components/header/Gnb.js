@@ -19,7 +19,9 @@ const Gnb = () => {
         <li className="alba" ref={albaRef}>
           <Link to="/" onClick={() => albaRef.current.classList.toggle('open')}>
             알바
-            <IconDropdown />
+            <button className="btn-dropdown">
+              <IconDropdown $fz="0.75em"/>
+            </button>
           </Link>
           <ul>
             <li>

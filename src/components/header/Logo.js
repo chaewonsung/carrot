@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ReactComponent as LogoImage } from '../../images/logo.svg';
 
 const Logo = () => {
   return (
     <Link to="/">
-      <LogoImage />
+      <img src="images/logo.svg" alt="" height="100%" />
     </Link>
   );
 };

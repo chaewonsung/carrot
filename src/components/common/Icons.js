@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 const Icon = styled.i`
-  font-size: ${({ $size }) => $size || null};
+  font-size: ${({ $fz }) => $fz || null};
+  scale: ${({ $scale }) => $scale || null};
 `;
 
 export const IconArrowUpRight = (props) => (
@@ -18,4 +19,19 @@ export const IconClose = (props) => (
 );
 export const IconDropdown = (props) => (
   <Icon className="bi bi-chevron-down icon-dropdown" {...props}></Icon>
+);
+export const IconLocation = (props) => (
+  <Icon className="bi bi-geo-alt-fill icon-location" {...props}></Icon>
+);
+export const IconDropdownFill = (props) => (
+  <Icon className="bi bi-caret-down-fill icon-dropdown-fill" {...props}></Icon>
+);
+export const IconCrosshair = (props) => (
+  <Icon className="bi bi-crosshair icon-crosshair" {...props}></Icon>
+);
+export const IconSwiperNext = (props) => (
+  <Icon className="bi bi-chevron-right icon-swiper-next" {...props}></Icon>
+);
+export const IconSwiperPrev = (props) => (
+  <Icon className="bi bi-chevron-left icon-swiper-prev" {...props}></Icon>
 );

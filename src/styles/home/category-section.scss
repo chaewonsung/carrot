@@ -1,0 +1,127 @@
+@use '../variables' as _;
+
+.categorySec {
+  &__content {
+    padding-bottom: 70px;
+  }
+  &__header {
+    font-size: _.rem(24px);
+    font-weight: 600;
+    padding: 40px 0;
+  }
+  &__swiper {
+    --text-height: 40px;
+    --swiper-navigation-y-offset: calc(-50% - var(--text-height) / 2);
+
+    position: relative;
+    .swiper-side-overlay {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 30px;
+      z-index: 1;
+      &--prev {
+        left: 0;
+        transform: translateX(-50%);
+        background: linear-gradient(to right, white 70%, transparent);
+      }
+      &--next {
+        right: 0;
+        transform: translateX(50%);
+        background: linear-gradient(to left, white 70%, transparent);
+      }
+
+      /* side overlay hide/show animation */
+      opacity: 0.99;
+      transition: 0.2s;
+      &.hide {
+        opacity: 0;
+      }
+    }
+    .btn-swiper-nav {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      background-color: nth(_.$gray, 1);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      box-shadow: 0 3px 5px #{nth(_.$gray, 10) + '20'};
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translate(-50%, var(--swiper-navigation-y-offset));
+    }
+
+    /* swiper hover button animation */
+    .btn-swiper-nav {
+      opacity: 0;
+      transition: 0.2s;
+    }
+    &:hover {
+      .btn-swiper-nav {
+        opacity: 0.99;
+      }
+    }
+  }
+  .swiper {
+    &__slide {
+      text-align: center;
+      width: 160px;
+
+      /* swiper slide hover image animation */
+      img {
+        transform: scale(1);
+        transition: 0.2s;
+      }
+      &:hover {
+        img {
+          transform: scale(1.05);
+        }
+      }
+    }
+    &__imgBox {
+      aspect-ratio: 1/1;
+      background-color: nth(_.$gray, 3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+    &__text {
+      line-height: var(--text-height);
+      font-weight: 600;
+      font-size: _.rem(14px);
+    }
+  }
+}
+
+/* Responsive : Laptop */
+@media screen and (max-width: _.$laptop) {
+  .categorySec {
+    &__header {
+      font-size: _.rem(20px);
+    }
+    .swiper {
+      &__slide {
+        width: 145px;
+      }
+    }
+  }
+}
+@media screen and (max-width: _.$tablet) {
+  .categorySec {
+    &__swiper {
+      user-select: none;
+      .swiper-side-overlay {
+        display: none;
+      }
+    }
+    .swiper {
+      margin: 0 calc(var(--inner-padding) * -1);
+      &__slide {
+        width: 108px;
+      }
+    }
+  }
+}

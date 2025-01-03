@@ -7,7 +7,8 @@
   z-index: 999;
 
   /* header toggle animation */
-  .btn-search {
+  .btn-search,
+  .btn-change-address {
     opacity: 0.99;
     visibility: visible;
     transition: 0.2s;
@@ -35,9 +36,10 @@
     }
   }
   &.full {
-    .btn-search {
-      opacity: 0;
-      visibility: hidden;
+    .btn-search,
+    .btn-change-address {
+      opacity: 0 !important;
+      visibility: hidden !important;
     }
     .btn-menu {
       .icon-menu {
@@ -82,6 +84,9 @@
   }
   &__logo {
     height: 45%;
+    svg {
+      height: 100%;
+    }
   }
   &__gnb {
     nav {
@@ -103,9 +108,8 @@
       .alba {
         position: relative;
         .icon-dropdown {
-          margin-left: 5px;
           color: nth(_.$gray, 8);
-          font-size: 0.75em;
+          margin-left: 3px;
         }
         ul {
           @include _.select-ul;
@@ -116,14 +120,20 @@
           font-size: _.rem(14px);
         }
 
-        /* alba hover dropdown */
+        /* alba dropdown animation */
         ul {
           visibility: hidden;
           transform: translateY(-10%);
           opacity: 0;
           transition: all 0.2s;
+          &:has(a:focus) {
+            visibility: visible;
+            transform: translateY(0);
+            opacity: 0.99;
+          }
         }
-        &:hover {
+        &:hover,
+        &:has(.btn-dropdown:focus) {
           ul {
             visibility: visible;
             transform: translateY(0);
@@ -135,7 +145,6 @@
   }
   &__buttons {
     display: flex;
-    align-items: center;
     gap: 8px;
     font-size: _.rem(14px);
     .icon-search {
@@ -144,6 +153,24 @@
     .btn-menu {
       width: 30px;
       text-align: center;
+    }
+  }
+
+  /* scroll animation */
+  .btn-search {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .btn-change-address {
+    transform: translateX(40%);
+  }
+  &.scroll {
+    .btn-search {
+      opacity: 0.99;
+      visibility: visible;
+    }
+    .btn-change-address {
+      transform: translateX(0);
     }
   }
 }

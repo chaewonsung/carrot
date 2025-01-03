@@ -128,8 +128,16 @@ button {
   background-color: transparent;
   cursor: pointer;
   font: inherit;
+  text-align: left;
 }
 a {
   color: inherit;
   text-decoration: none;
+}
+input {
+  border: none;
+  outline: none;
+  font: inherit;
+  font-size: 1rem;
+  padding: 0;
 }

@@ -1,6 +1,13 @@
 /* Colors */
 $gray: #fff, #f7f8f9, #f3f4f5, #eeeff1, #dcdee3, #d1d3d8, #b0b3ba, #868b94,
   #586070, #1a1c20;
+$carrot: #fff2ec, #ffe8db, #ffd5c0, #ffb999, #ff9364, #f60, #e84500, #b93901,
+  #862b00;
+
+/* Responsive */
+$laptop: 1024px;
+$tablet: 768px;
+$mobile: 400px;
 
 /* Functions */
 @function rem($size) {
@@ -12,6 +19,7 @@ $gray: #fff, #f7f8f9, #f3f4f5, #eeeff1, #dcdee3, #d1d3d8, #b0b3ba, #868b94,
   padding: 0.5em 0.3em;
   box-shadow: 0 0 5px 3px rgba(nth($gray, 7), 0.1);
   border-radius: 10px;
+  background-color: #fff;
   li {
     > * {
       padding: 0.7em;
