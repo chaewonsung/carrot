@@ -188,20 +188,21 @@
     justify-content: space-between;
   }
   &__gnb {
+    margin-bottom: 50px;
     nav {
       > ul {
         > li {
           font-size: _.rem(20px);
           font-weight: 600;
-          &:hover {
-            color: nth(_.$gray, 9);
-          }
         }
       }
       a {
         display: inline-block;
         width: 100%;
         padding: 15px 0;
+        &:hover {
+          color: nth(_.$gray, 9);
+        }
       }
       .alba {
         > a {
@@ -212,6 +213,8 @@
           font-size: _.rem(16px);
           color: nth(_.$gray, 9);
           font-weight: 500;
+        }
+        a {
           &:hover {
             color: nth(_.$gray, 8);
           }

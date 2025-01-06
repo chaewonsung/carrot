@@ -18,11 +18,12 @@ const FormSearchBlock = styled.form`
 const FormSearch = ({
   children: selectOption,
   placeholder = '검색어를 입력해주세요',
+  autoFocus,
 }) => {
   return (
     <FormSearchBlock>
       {selectOption}
-      <input type="search" placeholder={placeholder} />
+      <input type="search" placeholder={placeholder} autoFocus={autoFocus} />
       <BtnSearch />
     </FormSearchBlock>
   );

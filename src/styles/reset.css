@@ -140,4 +140,7 @@ input {
   font: inherit;
   font-size: 1rem;
   padding: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
 }

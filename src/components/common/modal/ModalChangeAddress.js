@@ -41,7 +41,7 @@ const ModalChangeAddress = ({ setShowModal }) => {
   return (
     <ModalChangeAddressBlock>
       <div className="__form">
-        <FormSearch placeholder="지역이나 동네로 검색하기" />
+        <FormSearch placeholder="지역이나 동네로 검색하기" autoFocus />
       </div>
       <div className="__btnSymbol">
         <BtnSymbol fullWidth fw="700">

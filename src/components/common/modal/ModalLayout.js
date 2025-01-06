@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { IconClose } from '../Icons';
 import palette from '../../../lib/styles/palette';
 import { mq, rem } from '../../../lib/styles/variables';
+import { useCallback, useEffect, useRef } from 'react';
 
 const ModalLayoutBlock = styled.div`
   position: fixed;
@@ -14,8 +15,31 @@ const ModalLayoutBlock = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  /* appear animation */
+  opacity: 0;
+  transition: all 0.2s;
+  > * {
+    transform: scale(0.8);
+    transition: all 0.2s;
+  }
+  &.enter {
+    opacity: 0.99;
+    > * {
+      transform: scale(1);
+    }
+  }
   @media screen and (max-width: ${mq.tablet}px) {
     align-items: flex-end;
+    /* appear animation */
+    > * {
+      transform: translateY(100%);
+      transition: all 0.2s ease-in-out;
+    }
+    &.enter {
+      > * {
+        transform: translateY(0);
+      }
+    }
   }
 `;
 const Modal = styled.div`
@@ -54,16 +78,25 @@ const ModalBtnClose = styled.button`
 `;
 
 const ModalLayout = ({ header, setShowModal, children }) => {
+  const modalLayoutBlockRef = useRef(null);
+  const handleClick = useCallback(() => {
+    modalLayoutBlockRef.current.classList.remove('enter');
+    setTimeout(() => setShowModal(false), 200);
+  }, [setShowModal]);
+  useEffect(() => {
+    setTimeout(() => modalLayoutBlockRef.current.classList.add('enter'), 0);
+  }, []);
   return (
     <ModalLayoutBlock
       onClick={(e) => {
-        if (e.currentTarget === e.target) setShowModal(false);
+        if (e.currentTarget === e.target) handleClick();
       }}
+      ref={modalLayoutBlockRef}
     >
       <Modal>
         <ModalHeader>{header}</ModalHeader>
         <ModalContent>{children}</ModalContent>
-        <ModalBtnClose onClick={() => setShowModal(false)}>
+        <ModalBtnClose onClick={handleClick}>
           <IconClose />
         </ModalBtnClose>
       </Modal>
