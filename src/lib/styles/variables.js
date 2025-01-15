@@ -17,7 +17,7 @@ export const verticalLine = (option) => `
     content: '';
     position: absolute;
     top: 50%;
-    right: 0;
+     ${option?.before ? 'left: 0;' : 'right: 0;'}
     transform: translate(50%, -50%);
     width: ${option?.width || '1px'};
     height: ${option?.height || '100%'};

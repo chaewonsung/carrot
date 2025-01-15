@@ -5,6 +5,7 @@ import { IconDropdown, IconLocation } from '../Icons';
 import styled from 'styled-components';
 import ModalChangeAddress from '../modal/ModalChangeAddress';
 import ModalContainer from '../modal/ModalContainer';
+import { useCookies } from 'react-cookie';
 
 const BtnChangeAddressBlock = styled(BtnGray)`
   display: flex;
@@ -13,11 +14,9 @@ const BtnChangeAddressBlock = styled(BtnGray)`
 `;
 
 const BtnChangeAddress = () => {
+  const [cookies] = useCookies(['address']);
   const [showModal, setShowModal] = useState(false);
-  const {
-    state: { address },
-  } = useContext(AddressContext);
-  const addressArr = address.split(' ');
+  const address = cookies.address?.split(' ').at(-1);
 
   return (
     <>
@@ -28,7 +27,7 @@ const BtnChangeAddress = () => {
         fw="600"
       >
         <IconLocation />
-        {addressArr[2] || addressArr[1]}
+        {address}
         <IconDropdown $fz="0.8em" />
       </BtnChangeAddressBlock>
       {showModal && (

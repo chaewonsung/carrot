@@ -22,7 +22,7 @@ body {
     display: none;
   }
 }
-body:has(#modal-root > *),
+body:has(#modal-root > .enter, #modal-root > .show),
 body:has(.select-option .show-list),
 body:has(.header.full) {
   overflow: hidden;
@@ -33,10 +33,6 @@ body:has(.header.full) {
 }
 .bi {
   color: inherit;
-  &::before {
-    // vertical-align: baseline;
-    // -webkit-text-stroke: 0.02em;
-  }
 }
 input {
   &::placeholder {

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const Icon = styled.i`
+  display: inline-block;
   font-size: ${({ $fz }) => $fz || null};
   scale: ${({ $scale }) => $scale || null};
 `;
@@ -34,4 +35,7 @@ export const IconSwiperNext = (props) => (
 );
 export const IconSwiperPrev = (props) => (
   <Icon className="bi bi-chevron-left icon-swiper-prev" {...props}></Icon>
+);
+export const IconFilter = (props) => (
+  <Icon className="bi bi-filter icon-filter" {...props}></Icon>
 );

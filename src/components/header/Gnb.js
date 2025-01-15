@@ -8,7 +8,7 @@ const Gnb = () => {
     <nav>
       <ul>
         <li>
-          <Link to="/">중고거래</Link>
+          <Link to="/buy-sell">중고거래</Link>
         </li>
         <li>
           <Link to="/">부동산</Link>
@@ -20,7 +20,7 @@ const Gnb = () => {
           <Link to="/" onClick={() => albaRef.current.classList.toggle('open')}>
             알바
             <button className="btn-dropdown">
-              <IconDropdown $fz="0.75em"/>
+              <IconDropdown $fz="0.75em" />
             </button>
           </Link>
           <ul>

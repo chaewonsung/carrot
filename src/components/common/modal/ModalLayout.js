@@ -16,13 +16,16 @@ const ModalLayoutBlock = styled.div`
   align-items: center;
   justify-content: center;
   /* appear animation */
+  visibility: hidden;
   opacity: 0;
   transition: all 0.2s;
   > * {
     transform: scale(0.8);
     transition: all 0.2s;
   }
-  &.enter {
+  &.enter,
+  &.show {
+    visibility: visible;
     opacity: 0.99;
     > * {
       transform: scale(1);
@@ -77,26 +80,33 @@ const ModalBtnClose = styled.button`
   scale: 1.3;
 `;
 
-const ModalLayout = ({ header, setShowModal, children }) => {
+const ModalLayout = ({ header, setShowModal, children, showModal }) => {
   const modalLayoutBlockRef = useRef(null);
   const handleClick = useCallback(() => {
     modalLayoutBlockRef.current.classList.remove('enter');
     setTimeout(() => setShowModal(false), 200);
   }, [setShowModal]);
+  const isStaticModal = showModal === undefined ? false : true;
+
   useEffect(() => {
-    setTimeout(() => modalLayoutBlockRef.current.classList.add('enter'), 0);
+    if (!isStaticModal)
+      setTimeout(() => modalLayoutBlockRef.current.classList.add('enter'), 0);
   }, []);
   return (
     <ModalLayoutBlock
+      className={showModal ? 'show' : null}
       onClick={(e) => {
-        if (e.currentTarget === e.target) handleClick();
+        if (e.currentTarget === e.target)
+          isStaticModal ? setShowModal(false) : handleClick();
       }}
       ref={modalLayoutBlockRef}
     >
       <Modal>
         <ModalHeader>{header}</ModalHeader>
         <ModalContent>{children}</ModalContent>
-        <ModalBtnClose onClick={handleClick}>
+        <ModalBtnClose
+          onClick={isStaticModal ? () => setShowModal(false) : handleClick}
+        >
           <IconClose />
         </ModalBtnClose>
       </Modal>

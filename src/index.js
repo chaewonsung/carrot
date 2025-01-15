@@ -4,14 +4,20 @@ import './styles/common.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import ContextProvider from './contexts';
+import { CookiesProvider } from 'react-cookie';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter basename="/carrot">
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </BrowserRouter>
+  <React.StrictMode>
+    <BrowserRouter basename="/carrot">
+      <CookiesProvider>
+        <ContextProvider>
+          <App />
+        </ContextProvider>
+      </CookiesProvider>
+    </BrowserRouter>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

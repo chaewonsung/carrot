@@ -1,11 +1,10 @@
-import React, { useContext, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import FormSearch from '../forms/FormSearch';
 import { BtnSymbol } from '../buttons/Btn';
 import { rem } from '../../../lib/styles/variables';
 import palette from '../../../lib/styles/palette';
 import { IconCrosshair } from '../Icons';
-import AddressContext from '../../../contexts/address';
+import { useCookies } from 'react-cookie';
 
 const ModalChangeAddressBlock = styled.div`
   display: flex;
@@ -87,9 +86,7 @@ const AddressListBlock = styled.div`
 `;
 
 const AddressList = ({ setShowModal }) => {
-  const {
-    actions: { setAddress },
-  } = useContext(AddressContext);
+  const [, setCookie] = useCookies(['address']);
   return (
     <AddressListBlock>
       <span>추천</span>
@@ -106,7 +103,8 @@ const AddressList = ({ setShowModal }) => {
           <li key={item}>
             <button
               onClick={() => {
-                setAddress(item);
+                // setAddress(item);
+                setCookie('address', item);
                 setShowModal(false);
               }}
             >
