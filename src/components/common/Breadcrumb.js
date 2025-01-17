@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import palette from '../../lib/styles/palette';
 import { rem } from '../../lib/styles/variables';
 
 const BreadcrumbBlock = styled.nav`
   display: flex;
+  padding: 10px 0;
   ol {
     color: ${palette.gray[8]};
     font-size: ${rem(14)};
@@ -25,6 +26,7 @@ const BreadcrumbBlock = styled.nav`
 `;
 
 const Breadcrumb = ({ path }) => {
+  // const { item } = useParams();
   return (
     <BreadcrumbBlock>
       <ol>

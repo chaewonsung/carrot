@@ -67,9 +67,9 @@ const BuySellMarketItemList = () => {
   );
 };
 
-const BuySellMarketItem = ({ item }) => {
+export const BuySellMarketItem = ({ item }) => {
   return (
-    <BuySellMarketItemBlock to='타원형 좌식 테이블'>
+    <BuySellMarketItemBlock to="타원형 좌식 테이블">
       <div className="img-box">
         <img
           src={`https://picsum.photos/300?random=${Math.random()}`}

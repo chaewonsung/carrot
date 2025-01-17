@@ -7,6 +7,9 @@ export const mq = {
   mobile: 400,
 };
 
+export const media = (breakpoint) =>
+  `@media screen and (max-width: ${mq[breakpoint]}px)`;
+
 export const rem = (px) => px / 16 + 'rem';
 
 export const verticalLine = (option) => `
